@@ -4,6 +4,8 @@
 *.log
 *.env
 # But keep these folders
+.stfolder/
+.vscode/
 
 
 
