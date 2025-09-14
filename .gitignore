@@ -1,0 +1,11 @@
+# Ignore everything
+*.csv
+*.zip
+*.log
+*.env
+# But keep these folders
+
+
+
+# Also keep the .gitignore file itself
+!.gitignore

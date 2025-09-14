@@ -1,0 +1,27 @@
+from SmartApi import SmartConnect
+import pyotp
+
+# Replace with your credentials
+api_key = "7AQtHyef"
+client_id = "AAAI477084"
+password = "0518"
+totp_token = "4TAS2GWW75LIZ2IEXEMN7KJDWI"
+
+# Initialize SmartConnect object
+obj = SmartConnect(api_key=api_key)
+
+# Generate session
+try:
+    totp = pyotp.TOTP(totp_token).now()
+    session_data = obj.generateSession(client_id, password, totp)
+    auth_token = session_data['data']['jwtToken']
+    feed_token = obj.getfeedToken()
+    print("Login successful!")
+    print("Auth Token:", auth_token)
+    print("Feed Token:", feed_token)
+except Exception as e:
+    print("Error during login:", e)
+    exit()
+
+#  Auth Token: Bearer eyJhbGciOiJIUzUxMiJ9.eyJ1c2VybmFtZSI6IkFBQUk0NzcwODQiLCJyb2xlcyI6MCwidXNlcnR5cGUiOiJVU0VSIiwidG9rZW4iOiJleUpoYkdjaU9pSlNVekkxTmlJc0luUjVjQ0k2SWtwWFZDSjkuZXlKMWMyVnlYM1I1Y0dVaU9pSmpiR2xsYm5RaUxDSjBiMnRsYmw5MGVYQmxJam9pZEhKaFpHVmZZV05qWlhOelgzUnZhMlZ1SWl3aVoyMWZhV1FpT2pnc0luTnZkWEpqWlNJNklqTWlMQ0prWlhacFkyVmZhV1FpT2lJd09ESTNNV0l6WlMxaFptRmlMVE13TW1VdFlUQTROeTFpTnpoaFpqY3haalk0TmpraUxDSnJhV1FpT2lKMGNtRmtaVjlyWlhsZmRqRWlMQ0p2Ylc1bGJXRnVZV2RsY21sa0lqbzRMQ0p3Y205a2RXTjBjeUk2ZXlKa1pXMWhkQ0k2ZXlKemRHRjBkWE1pT2lKaFkzUnBkbVVpZlN3aWJXWWlPbnNpYzNSaGRIVnpJam9pWVdOMGFYWmxJbjE5TENKcGMzTWlPaUowY21Ga1pWOXNiMmRwYmw5elpYSjJhV05sSWl3aWMzVmlJam9pUVVGQlNUUTNOekE0TkNJc0ltVjRjQ0k2TVRjME1EY3pOREUwT1N3aWJtSm1Jam94TnpRd05qUTNOVFk1TENKcFlYUWlPakUzTkRBMk5EYzFOamtzSW1wMGFTSTZJak5rT0RZM01UWTFMVEZoTnpVdE5EUTRNaTA0Wm1Ga0xXVTJPVE5rWlRNMU9XSmpaQ0lzSWxSdmEyVnVJam9pSW4wLldpUm9ncDdoQzFqakxRNGRxUEdfV09qWGlqQ0xoTzM5NUhQSUtiVmNtYktGVmFRZm5BcWg5NG45LU42c0swY0ZXRkgtckYxNWpkT2t0VUQtUFlMak1GZFNwbGUtQlpXaWNhSmRaaWd1WnJjQzVfbGtMRGhKeEZBekpIcGE5VllUV3ZMZUVRZHVLbDJYMUtSSmFRVGhMa19TejBKVHJSTmc5Z19IbGxHSU91cyIsIkFQSS1LRVkiOiI3QVF0SHllZiIsImlhdCI6MTc0MDY0Nzc0OSwiZXhwIjoxNzQwNzM0MTQ5fQ.gf0tjzOqL9lWRLxdq5hZmf1kUR3DtNHYLEluNwy1f_e-HcgdusTQSWkDeNzrYJiYSYgn_7SPX9KzwHd2RM-kuQ
+#  Feed Token: eyJhbGciOiJIUzUxMiJ9.eyJ1c2VybmFtZSI6IkFBQUk0NzcwODQiLCJpYXQiOjE3NDA2NDc3NDksImV4cCI6MTc0MDczNDE0OX0.qC6kyiLDl7vXjw0YXtalWMYLQ0kXf7FVfhBdY0x8bTcjfvUqFSxtlUWUA8ryacrM0tzM-BDhKKHPtvgKt2j8Mw
