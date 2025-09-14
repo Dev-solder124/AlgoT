@@ -1,5 +1,0 @@
-# This directory is a Syncthing folder marker.
-# Do not delete.
-
-folderID: uxb3i-wpz4d
-created: 2025-05-22T23:08:19+05:30
